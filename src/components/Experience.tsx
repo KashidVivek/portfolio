@@ -1,5 +1,6 @@
 
-import { Calendar, MapPin } from 'lucide-react';
+import { Calendar, MapPin, ChevronRight } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
 
 const Experience = () => {
   const experiences = [
@@ -58,39 +59,50 @@ const Experience = () => {
   ];
 
   return (
-    <section className="py-12 bg-gray-50">
-      <div className="max-w-4xl mx-auto px-6">
-        <h2 className="text-3xl font-bold text-gray-900 mb-8">Work Experience</h2>
+    <section className="py-20 bg-background relative">
+      <div className="absolute inset-0 bg-dot-pattern opacity-[0.02]" />
+      <div className="relative max-w-6xl mx-auto px-6">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-foreground mb-4">Work Experience</h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-primary/50 to-primary mx-auto rounded-full" />
+        </div>
         
         <div className="space-y-8">
           {experiences.map((exp, index) => (
-            <div key={index} className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-900">{exp.role}</h3>
-                  <h4 className="text-lg font-medium text-blue-600">{exp.company}</h4>
-                </div>
-                <div className="flex flex-col md:items-end mt-2 md:mt-0 text-sm text-gray-600">
-                  <div className="flex items-center gap-1">
-                    <Calendar className="h-4 w-4" />
-                    <span>{exp.period}</span>
+            <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-border/50 hover:border-primary/20 overflow-hidden">
+              <CardContent className="p-8">
+                <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-6">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3 mb-2">
+                      <h3 className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
+                        {exp.role}
+                      </h3>
+                      <ChevronRight className="h-5 w-5 text-primary/60 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                    <h4 className="text-xl font-semibold text-primary mb-3">{exp.company}</h4>
                   </div>
-                  <div className="flex items-center gap-1 mt-1">
-                    <MapPin className="h-4 w-4" />
-                    <span>{exp.location}</span>
+                  <div className="flex flex-col lg:items-end space-y-2 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-muted/50">
+                      <Calendar className="h-4 w-4" />
+                      <span>{exp.period}</span>
+                    </div>
+                    <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-muted/50">
+                      <MapPin className="h-4 w-4" />
+                      <span>{exp.location}</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-              
-              <ul className="space-y-2">
-                {exp.achievements.map((achievement, achIndex) => (
-                  <li key={achIndex} className="flex items-start gap-2 text-gray-700">
-                    <span className="text-blue-600 mt-2">•</span>
-                    <span className="leading-relaxed">{achievement}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+                
+                <ul className="space-y-3">
+                  {exp.achievements.map((achievement, achIndex) => (
+                    <li key={achIndex} className="flex items-start gap-3 text-muted-foreground group-hover:text-foreground transition-colors">
+                      <div className="w-2 h-2 rounded-full bg-primary/60 mt-2 flex-shrink-0 group-hover:bg-primary transition-colors" />
+                      <span className="leading-relaxed">{achievement}</span>
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </div>

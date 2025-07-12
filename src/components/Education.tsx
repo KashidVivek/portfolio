@@ -1,5 +1,6 @@
 
-import { GraduationCap, MapPin } from 'lucide-react';
+import { GraduationCap, MapPin, Award } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
 
 const Education = () => {
   const education = [
@@ -20,29 +21,45 @@ const Education = () => {
   ];
 
   return (
-    <section className="py-12 bg-white">
-      <div className="max-w-4xl mx-auto px-6">
-        <h2 className="text-3xl font-bold text-gray-900 mb-8">Education</h2>
+    <section className="py-20 bg-muted/30 relative">
+      <div className="absolute inset-0 bg-gradient-to-b from-background/0 via-muted/20 to-background/0" />
+      <div className="relative max-w-6xl mx-auto px-6">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-foreground mb-4">Education</h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-primary/50 to-primary mx-auto rounded-full" />
+        </div>
         
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-8">
           {education.map((edu, index) => (
-            <div key={index} className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-              <div className="flex items-start gap-3">
-                <GraduationCap className="h-6 w-6 text-blue-600 mt-1 flex-shrink-0" />
-                <div className="flex-1">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-1">{edu.degree}</h3>
-                  <h4 className="text-md font-medium text-blue-600 mb-2">{edu.school}</h4>
-                  <div className="text-sm text-gray-600 space-y-1">
-                    <div>{edu.period}</div>
-                    <div className="flex items-center gap-1">
-                      <MapPin className="h-3 w-3" />
-                      <span>{edu.location}</span>
+            <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-border/50 hover:border-primary/20 overflow-hidden h-full">
+              <CardContent className="p-8">
+                <div className="flex items-start gap-4">
+                  <div className="p-3 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                    <GraduationCap className="h-8 w-8 text-primary" />
+                  </div>
+                  <div className="flex-1 space-y-3">
+                    <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+                      {edu.degree}
+                    </h3>
+                    <h4 className="text-lg font-semibold text-primary">{edu.school}</h4>
+                    <div className="space-y-2 text-sm text-muted-foreground">
+                      <div className="flex items-center gap-2">
+                        <div className="w-1 h-1 rounded-full bg-primary/60" />
+                        <span>{edu.period}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <MapPin className="h-3 w-3" />
+                        <span>{edu.location}</span>
+                      </div>
+                      <div className="flex items-center gap-2 font-medium text-foreground">
+                        <Award className="h-3 w-3 text-primary" />
+                        <span>{edu.gpa}</span>
+                      </div>
                     </div>
-                    <div className="font-medium text-gray-700">{edu.gpa}</div>
                   </div>
                 </div>
-              </div>
-            </div>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </div>
