@@ -9,14 +9,16 @@ const Education = () => {
       school: "University of Florida",
       period: "May 2021",
       location: "Gainesville, FL",
-      gpa: "GPA: 3.74 / 4.0"
+      gpa: "GPA: 3.74 / 4.0",
+      logo: "https://via.placeholder.com/120x60/FF6600/FFFFFF?text=UF"
     },
     {
       degree: "Bachelors, Computer Science",
       school: "University of Pune",
       period: "June 2019",
       location: "Pune, India",
-      gpa: "CGPA: 8.55/10.0"
+      gpa: "CGPA: 8.55/10.0",
+      logo: "https://via.placeholder.com/120x60/8B5CF6/FFFFFF?text=UOP"
     }
   ];
 
@@ -32,6 +34,13 @@ const Education = () => {
         <div className="grid md:grid-cols-2 gap-8">
           {education.map((edu, index) => (
             <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-border/50 hover:border-primary/20 overflow-hidden h-full">
+              <div className="bg-gradient-to-r from-muted/30 to-muted/10 p-6 flex justify-center items-center">
+                <img 
+                  src={edu.logo} 
+                  alt={`${edu.school} logo`}
+                  className="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110"
+                />
+              </div>
               <CardContent className="p-8">
                 <div className="flex items-start gap-4">
                   <div className="p-3 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors">

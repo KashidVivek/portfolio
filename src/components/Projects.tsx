@@ -13,7 +13,7 @@ const Projects = () => {
       description: "Administered web application built using Django to get personalized movie suggestions containing 25 million ratings and 10 million tags which recommends from across 60,000 movies similar to that of user liked in past.",
       featured: true,
       icon: Database,
-      image: "https://images.unsplash.com/photo-1489875347897-49f64b51c1f8?w=400&h=200&fit=crop",
+      logo: "https://via.placeholder.com/100x40/EF4444/FFFFFF?text=Rekemendo",
       color: "from-blue-500/10 to-blue-600/10"
     },
     {
@@ -22,7 +22,7 @@ const Projects = () => {
       technologies: "Python, Django, SQL Oracle 11g, JavaScript",
       description: "Programmed a website using Django framework which analyzed over 1 Million datasets of San Francisco crime records and presented crime statistics and trends visualized. Worked with motivated team and collaborated as database manager, wrote SQL procedures and complex queries.",
       icon: Globe,
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=200&fit=crop",
+      logo: "https://via.placeholder.com/100x40/10B981/FFFFFF?text=SF+Crime",
       color: "from-green-500/10 to-green-600/10"
     },
     {
@@ -31,7 +31,7 @@ const Projects = () => {
       technologies: "JavaScript (Node.js, React.js)",
       description: "Designed and coded a web application to search events happening in the city for the current date using React.js, and redux library and used react-leaflet to render maps, and location popups.",
       icon: Cpu,
-      image: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=400&h=200&fit=crop",
+      logo: "https://via.placeholder.com/100x40/8B5CF6/FFFFFF?text=Happene",
       color: "from-purple-500/10 to-purple-600/10"
     }
   ];
@@ -52,12 +52,13 @@ const Projects = () => {
           {projects.map((project, index) => (
             <Card key={index} className={`group hover:shadow-xl transition-all duration-300 border-border/50 hover:border-primary/20 overflow-hidden h-full ${project.featured ? 'lg:col-span-2 xl:col-span-1' : ''}`}>
               <div className="relative">
-                <img 
-                  src={project.image} 
-                  alt={project.name}
-                  className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
-                />
-                <div className={`absolute inset-0 bg-gradient-to-t ${project.color} to-transparent`} />
+                <div className={`h-48 bg-gradient-to-r ${project.color} flex items-center justify-center transition-all duration-300 group-hover:scale-105`}>
+                  <img 
+                    src={project.logo} 
+                    alt={`${project.name} logo`}
+                    className="h-16 w-auto object-contain"
+                  />
+                </div>
                 <div className="absolute top-4 left-4 flex items-center gap-2">
                   <div className="p-2 rounded-lg bg-background/90 backdrop-blur-sm">
                     <project.icon className="h-5 w-5 text-primary" />

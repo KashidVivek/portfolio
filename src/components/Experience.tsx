@@ -13,7 +13,7 @@ const Experience = () => {
         "Designed and development of personalized career development learning plans in LinkedIn learning.",
         "Facilitating the design and development of LSAT surveys for course to demonstrate ROI to enterprise admins."
       ],
-      image: "https://images.unsplash.com/photo-1572021335469-31706a17aaef?w=400&h=200&fit=crop",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-original.svg",
       current: true
     },
     {
@@ -26,7 +26,7 @@ const Experience = () => {
         "Developed the GDPR API's for merge/unmerge and purge users.",
         "Designed and development of enhanced test taking experience in LinkedIn learning."
       ],
-      image: "https://images.unsplash.com/photo-1572021335469-31706a17aaef?w=400&h=200&fit=crop"
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-original.svg"
     },
     {
       company: "EduBrite Systems Inc",
@@ -38,7 +38,7 @@ const Experience = () => {
         "Collaborated along with Principal architects to plan and code existing monolith in Microservices based architecture.",
         "Utilized Spring framework for integration of Cisco WebEx into the learning Management system for Virtual instructor led events and furthering launch of app on the WebEx marketplace."
       ],
-      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=200&fit=crop"
+      logo: "https://via.placeholder.com/100x40/0F766E/FFFFFF?text=EduBrite"
     },
     {
       company: "Diyversity",
@@ -49,7 +49,7 @@ const Experience = () => {
         "Facilitating the integration, parsing, scraping and transformation of data to create new dataset having 50K songs.",
         "Design and coding the implementation of deep learning-based solutions Video labelling, podcast recommendations and Image recognition, and deployment as REST API's."
       ],
-      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=200&fit=crop"
+      logo: "https://via.placeholder.com/100x40/7C3AED/FFFFFF?text=Diyversity"
     },
     {
       company: "Korea Institute of Science and Technology",
@@ -60,7 +60,7 @@ const Experience = () => {
         "Demonstrated and delivered High quality live streaming of video onto a head Mounted Device by RTP streaming.",
         "Reduced the video latency by 50%, refined automated switching and video stitching the live streams with help of NVIDIA CUDA."
       ],
-      image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=200&fit=crop"
+      logo: "https://via.placeholder.com/100x40/1E40AF/FFFFFF?text=KIST"
     }
   ];
 
@@ -86,13 +86,12 @@ const Experience = () => {
           {experiences.map((exp, index) => (
             <Card key={index} className={`group hover:shadow-xl transition-all duration-300 border-border/50 hover:border-primary/20 overflow-hidden ${exp.current ? 'ring-2 ring-primary/20' : ''}`}>
               <div className="flex flex-col lg:flex-row">
-                <div className="lg:w-80 relative">
+                <div className="lg:w-80 relative flex items-center justify-center bg-gradient-to-r from-muted/30 to-muted/10 p-8">
                   <img 
-                    src={exp.image} 
-                    alt={exp.company}
-                    className="w-full h-48 lg:h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    src={exp.logo} 
+                    alt={`${exp.company} logo`}
+                    className="h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent" />
                   {exp.current && (
                     <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-primary text-primary-foreground text-xs font-medium">
                       Current Role
