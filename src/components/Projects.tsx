@@ -1,5 +1,5 @@
 
-import { ExternalLink, Calendar, Code2, Star } from 'lucide-react';
+import { ExternalLink, Calendar, Code2, Star, Database, Globe, Cpu } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
@@ -11,19 +11,28 @@ const Projects = () => {
       period: "June 2020",
       technologies: "Python, Django, Javascript, Pandas, Scikit Learn, AWS",
       description: "Administered web application built using Django to get personalized movie suggestions containing 25 million ratings and 10 million tags which recommends from across 60,000 movies similar to that of user liked in past.",
-      featured: true
+      featured: true,
+      icon: Database,
+      image: "https://images.unsplash.com/photo-1489875347897-49f64b51c1f8?w=400&h=200&fit=crop",
+      color: "from-blue-500/10 to-blue-600/10"
     },
     {
       name: "San Francisco Crime Analysis and Trend Visualization",
       period: "Dec 2019",
       technologies: "Python, Django, SQL Oracle 11g, JavaScript",
-      description: "Programmed a website using Django framework which analyzed over 1 Million datasets of San Francisco crime records and presented crime statistics and trends visualized. Worked with motivated team and collaborated as database manager, wrote SQL procedures and complex queries."
+      description: "Programmed a website using Django framework which analyzed over 1 Million datasets of San Francisco crime records and presented crime statistics and trends visualized. Worked with motivated team and collaborated as database manager, wrote SQL procedures and complex queries.",
+      icon: Globe,
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=200&fit=crop",
+      color: "from-green-500/10 to-green-600/10"
     },
     {
       name: "Happene",
       period: "Dec 2019",
       technologies: "JavaScript (Node.js, React.js)",
-      description: "Designed and coded a web application to search events happening in the city for the current date using React.js, and redux library and used react-leaflet to render maps, and location popups."
+      description: "Designed and coded a web application to search events happening in the city for the current date using React.js, and redux library and used react-leaflet to render maps, and location popups.",
+      icon: Cpu,
+      image: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=400&h=200&fit=crop",
+      color: "from-purple-500/10 to-purple-600/10"
     }
   ];
 
@@ -34,33 +43,44 @@ const Projects = () => {
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-foreground mb-4">Featured Projects</h2>
           <div className="w-24 h-1 bg-gradient-to-r from-primary/50 to-primary mx-auto rounded-full" />
+          <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
+            Showcasing expertise in building data-driven applications and scalable web platforms
+          </p>
         </div>
         
         <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <Card key={index} className={`group hover:shadow-xl transition-all duration-300 border-border/50 hover:border-primary/20 overflow-hidden h-full ${project.featured ? 'lg:col-span-2 xl:col-span-1' : ''}`}>
-              <CardContent className="p-8 h-full flex flex-col">
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                      <Code2 className="h-5 w-5 text-primary" />
-                    </div>
-                    {project.featured && (
-                      <div className="flex items-center gap-1 px-2 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium">
-                        <Star className="h-3 w-3" />
-                        Featured
-                      </div>
-                    )}
+              <div className="relative">
+                <img 
+                  src={project.image} 
+                  alt={project.name}
+                  className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <div className={`absolute inset-0 bg-gradient-to-t ${project.color} to-transparent`} />
+                <div className="absolute top-4 left-4 flex items-center gap-2">
+                  <div className="p-2 rounded-lg bg-background/90 backdrop-blur-sm">
+                    <project.icon className="h-5 w-5 text-primary" />
                   </div>
-                  {project.url && (
-                    <Button variant="ghost" size="sm" className="group/btn" asChild>
+                  {project.featured && (
+                    <div className="flex items-center gap-1 px-3 py-1 rounded-full bg-primary/90 text-primary-foreground text-xs font-medium backdrop-blur-sm">
+                      <Star className="h-3 w-3" />
+                      Featured
+                    </div>
+                  )}
+                </div>
+                {project.url && (
+                  <div className="absolute top-4 right-4">
+                    <Button variant="secondary" size="sm" className="group/btn bg-background/90 hover:bg-background backdrop-blur-sm" asChild>
                       <a href={project.url} target="_blank" rel="noopener noreferrer">
                         <ExternalLink className="h-4 w-4 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
                       </a>
                     </Button>
-                  )}
-                </div>
-                
+                  </div>
+                )}
+              </div>
+              
+              <CardContent className="p-6 flex flex-col flex-1">
                 <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors mb-3">
                   {project.name}
                 </h3>
